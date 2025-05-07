@@ -4,17 +4,18 @@
 
 ## Table of Contents
 
-1. 🔍 Project Overview  
-2. 🛠️ Features  
-3. ⚙️ Tech Stack  
-4. 🧱📁 Architecture & Structure  
-5. 🚀 Build & Run  
-6. 🧪 Running Tests  
-7. 🗺️ Roadmap  
+1. [🔍 Project Overview](#1-project-overview)  
+2. [🛠️ Features](#2-features)  
+3. [⚙️ Tech Stack](#3-tech-stack)  
+4. [🧱📁 Architecture & Structure](#4-architecture--structure)  
+5. [🚀 Build & Run](#5-build--run)  
+6. [🧪 Running Tests](#6-running-tests)  
+7. [🗺️ Roadmap](#7-roadmap)
+
 
 ---
 
-## 1. 🔍 Project Overview
+## 1. Project Overview
 
 **Checkmate.JNI** is a fully-featured native chess engine with a **Java/Swing interface** and a **C++20 backend** accessed via **JNI**.  
 Designed for precision, clarity, and performance — it brings real chess logic to life in a clean desktop experience.
@@ -24,7 +25,7 @@ Designed for precision, clarity, and performance — it brings real chess logic 
 
 ---
 
-## 2. 🛠️ Features
+## 2. Features
 
 - **Full rules** — legal moves, captures, turns, promotion  
 - **Endgame detection** — check, checkmate, stalemate  
@@ -36,7 +37,7 @@ Designed for precision, clarity, and performance — it brings real chess logic 
 
 
 ---
-## 3. ⚙️ Tech Stack
+## 3. Tech Stack
 
 ### Frontend (Java)
 
@@ -60,7 +61,7 @@ Designed for precision, clarity, and performance — it brings real chess logic 
 
 ---
 
-## 4. 🧱📁 Architecture & Structure
+## 4. Architecture & Structure
 
 - **`cpp/`** — C++ backend (engine logic + JNI)
   - `ChessBoard.cpp` / `ChessBoard.h`
@@ -78,7 +79,7 @@ Designed for precision, clarity, and performance — it brings real chess logic 
 
 ---
 
-## 5. 🚀 Build & Run
+## 5. Build & Run
 
 ### 🧩 Native Library (C++)
 1. Open `cpp/` folder in CLion (or any CMake IDE)
@@ -94,7 +95,7 @@ Designed for precision, clarity, and performance — it brings real chess logic 
 
 ---
 
-## 6. 🧪 Running Tests
+## 6. Running Tests
 
 All core logic is covered with unit tests in `ChessBoardTest.java` using **JUnit 5**.
 
@@ -105,7 +106,7 @@ To run tests:
 Right-click -> Run ChessBoardTest
 ```
 
-## 7. 🗺️ Roadmap
+## 7. Roadmap
 
 Planned improvements and upcoming features:
 
