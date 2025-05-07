@@ -2,6 +2,7 @@
 
 [![Java 21](https://img.shields.io/badge/Java-21-red?logo=java)](https://www.oracle.com/java/) [![C%2B%2B 20](https://img.shields.io/badge/C%2B%2B-20-blue?logo=c%2B%2B)](https://isocpp.org/) [![Tests](https://img.shields.io/badge/JUnit–5-passing-brightgreen.svg)](https://junit.org/)
 
+![chess](https://github.com/user-attachments/assets/3aa5ff42-2d27-48e5-954b-04ce5e397afb)
 ## Table of Contents
 
 1. [🔍 Project Overview](#1-project-overview)  
@@ -22,7 +23,12 @@ Designed for precision, clarity, and performance — it brings real chess logic 
 
 > Whether you're analyzing or just playing — it feels like real chess.
 
+## 🎥 Demo
 
+See **Checkmate.JNI** in action:  
+▶️ [Watch on YouTube](https://www.youtube.com/watch?v=nk1ByrFHavY)
+
+[![Checkmate.JNI Demo](https://img.youtube.com/vi/nk1ByrFHavY/0.jpg)](https://www.youtube.com/watch?v=nk1ByrFHavY)
 ---
 
 ## 2. Features
@@ -54,7 +60,7 @@ Designed for precision, clarity, and performance — it brings real chess logic 
 | Feature           | Technology                                |
 |-------------------|-------------------------------------------|
 | Language          | C++20                                     |
-| JNI Bridge        | Native methods (C++ `ChessBoard ` class)       |
+| JNI Bridge        | Native methods (C++ `ChessBoard` class)       |
 | Build System      | CMake (`libChess.dll`)        |
 | Formatting Lib    | fmtlib                                    |
 
@@ -65,7 +71,6 @@ Designed for precision, clarity, and performance — it brings real chess logic 
 
 - **`cpp/`** — C++ backend (engine logic + JNI)
   - `ChessBoard.cpp` / `ChessBoard.h`
-  - `library.cpp`
   - `CMakeLists.txt` → builds native library (`libChess.dll` / `.so`)
 
 - **`java/src/`** — Java frontend (UI + logic + tests)
@@ -81,17 +86,43 @@ Designed for precision, clarity, and performance — it brings real chess logic 
 
 ## 5. Build & Run
 
-### 🧩 Native Library (C++)
-1. Open `cpp/` folder in CLion (or any CMake IDE)
-2. Build to generate `libChess.dll` (or `.so`)
-3. Copy the resulting file to the `java/` directory
+Follow these steps from your repository root:
 
-### 🖥️ Java GUI
-1. Open `java/` in IntelliJ IDEA
-2. Run `ChessBoardGUI.java`
-3. If `libChess.dll` not found:
-   - Ensure it's in project root
-   - Add MinGW path to your system’s `PATH`
+### 5.1 🧩 Build the C++ Engine
+
+```bash
+cd cpp
+mkdir -p build && cd build
+cmake ..
+cmake --build .
+```
+This will produce:
+
+- cpp/build/Chess.dll on Windows
+- cpp/build/libChess.so on Linux/macOS
+
+### 5.2 📦 Install the Native Library
+Copy the freshly built native library into your Java lib/ folder:
+
+```bash
+# Windows
+cp build/Chess.dll ../java/lib/
+
+# Linux/macOS
+cp build/libChess.so ../java/lib/
+```
+
+### 5.3 🖥️ Compile & Run the Java GUI
+
+```bash
+cd ../java/src
+
+# 1. Compile Java sources and generate JNI header in ../lib
+javac -d ../out -h ../lib ChessBoard.java ChessBoardGUI.java ChessBoardTest.java
+
+# 2. Run the GUI
+java -cp ../out -Djava.library.path=../lib ChessBoardGUI
+```
 
 ---
 
@@ -108,12 +139,7 @@ Right-click -> Run ChessBoardTest
 
 ## 7. Roadmap
 
-Planned improvements and upcoming features:
+For more upcoming features and tracked improvements, see:  
+👉 [GitHub Issues for Checkmate.JNI](https://github.com/jkot16/chess-jni/issues)
 
-- **En passant** support *(currently missing)*
--  **Visual themes** – board color presets *(e.g. dark mode, blue)*
--  **Custom piece sets** – drag-and-drop alternative icons
--  **Save/load game state** – export/import from file
--  **Basic AI opponent** – using minimax or heuristic evaluation
--  **LAN multiplayer** *(stretch goal)*
 
