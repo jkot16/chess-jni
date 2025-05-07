@@ -1,0 +1,10 @@
+# C++ builds
+cpp/build/
+
+# Java compiled
+**/*.class
+
+# IntelliJ / out folders
+java/out/
+.idea/
+*.iml
